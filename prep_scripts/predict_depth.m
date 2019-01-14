@@ -1,14 +1,5 @@
-% MATLAB script to regress a depth mask for an image.
-% uses: (1) https://bitbucket.org/fayao/dcnf-fcsp/
-%       (2) vlfeat
-%       (3) matconvnet
-
-% Author: Ankush Gupta
-
 function predict_depth()
-    % setup vlfeat
     run( '../libs/vlfeat-0.9.18/toolbox/vl_setup');
-    % setup matconvnet
     dir_matConvNet='../libs/matconvnet/matlab/';
     addpath(genpath(dir_matConvNet));
     run([dir_matConvNet 'vl_setupnn.m']);
@@ -17,9 +8,9 @@ function predict_depth()
     opts.useGpu=true;
     opts.inpaint = true;
     opts.normalize_depth = false; % limit depth to [0,1]
-    opts.imdir = '/path/to/image/dir';
+    opts.imdir = '/home/nevak/Data/ocr';
 
-    opts.out_h5 = '/path/to/save/output/depth.h5';
+    opts.out_h5 = '/home/nevak/depth.h5';
 
     % these should point to the pre-trained models from:
     %  https://bitbucket.org/fayao/dcnf-fcsp/

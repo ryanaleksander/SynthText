@@ -514,7 +514,7 @@ class TextSource(object):
                       'PARA':self.sample_para}
 
         with open(fn,'r') as f:
-            self.txt = [l.strip() for l in f.readlines()]
+            self.txt = [l.strip().decode('utf-8') for l in f.readlines()]
 
         # distribution over line/words for LINE/PARA:
         self.p_line_nline = np.array([0.85, 0.10, 0.05])
